@@ -1,0 +1,46 @@
+@extends->layout
+
+@section->main_content
+
+<div class="row">
+    <div class="col-xs-12 col-md-8 col-lg-6 col-md-offset-2 col-lg-offset-3">
+
+        <p>Closest groups</p>
+
+        <form action="/task/6" method="post">
+            <label for="inputArray">Enter array of numbers:</label>
+            <input type="text" name="inputArray" id="inputArray">
+            <label for="inputGroups">Enter number of groups:</label>
+            <input type="text" name="inputGroups" id="inputGroups">
+            <input type="submit" value="Divide into groups" class="btn btn-primary">
+        </form>
+
+        <a href="/"><button class="btn btn-warning">Go Back</button></a>
+
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-xs-12 col-md-8 col-lg-6 col-md-offset-2 col-lg-offset-3">
+
+        <p>
+            <?php
+            if(isset($_SESSION['data'])){
+                $result = $_SESSION['data'];
+                if($result!==false){
+                    echo '<br>Input array: ' . $result['inputArray'];
+                    echo '<br>Number of groups: ' . $result['inputGroups'];
+                    foreach ($result['result'] as $key => $resultGroup) {
+                        echo '<br>Group ' . ($key+1) . ': ' . $resultGroup;
+                    }
+                } else {
+                    echo 'Unable to divide into groups';
+                }
+                unset($_SESSION['data']);
+            }
+            ?>
+        </p>
+
+    </div>
+</div>

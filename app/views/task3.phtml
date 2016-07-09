@@ -1,0 +1,35 @@
+@extends->layout
+
+@section->main_content
+
+<div class="row">
+    <div class="col-xs-12 col-md-8 col-lg-6 col-md-offset-2 col-lg-offset-3">
+
+        <p>Most common element in an array</p>
+
+        <form action="/task/3" method="post">
+            <label for="inputArray">Enter array elements separated by commas:</label>
+            <input type="text" name="inputArray" id="inputArray">
+            <input type="submit" value="Calculate" class="btn btn-primary">
+        </form>
+
+        <a href="/"><button class="btn btn-warning">Go Back</button></a>
+
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-xs-12 col-md-8 col-lg-6 col-md-offset-2 col-lg-offset-3">
+
+        <p>
+            <?php
+            if(isset($_SESSION['data'])){
+                echo ($_SESSION['data']!==false) ? 'Most common element in given array is: '.$_SESSION['data'] : 'No most common element in given array';
+                unset($_SESSION['data']);
+            }
+            ?>
+        </p>
+
+    </div>
+</div>

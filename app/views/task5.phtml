@@ -1,0 +1,37 @@
+@extends->layout
+
+@section->main_content
+
+<div class="row">
+    <div class="col-xs-12 col-md-8 col-lg-6 col-md-offset-2 col-lg-offset-3">
+
+        <p>Longest common string</p>
+
+        <form action="/task/5" method="post">
+            <label for="string1">Enter first string:</label>
+            <input type="text" name="string1" id="string1">
+            <label for="string2">Enter second string:</label>
+            <input type="text" name="string2" id="string2">
+            <input type="submit" value="Find longest common string" class="btn btn-primary">
+        </form>
+
+        <a href="/"><button class="btn btn-warning">Go Back</button></a>
+
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-xs-12 col-md-8 col-lg-6 col-md-offset-2 col-lg-offset-3">
+
+        <p>
+            <?php
+            if(isset($_SESSION['data'])){
+                echo ($_SESSION['data']!==false) ? 'Longest common string is: '.$_SESSION['data'] : 'No common string match';
+                unset($_SESSION['data']);
+            }
+            ?>
+        </p>
+
+    </div>
+</div>
